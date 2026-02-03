@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Forever Us 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+/* ===== GLOBAL RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Georgia, serif;
+  font-style:italic;
+}
+
+/* ===== BODY ===== */
+body{
+  background:pink;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+/* ===== LOADER ===== */
+#loader{
+  position:fixed;
+  inset:0;
+  background:pink;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.loader-heart{
+  font-size:60px;
+  animation:pulse 1.5s infinite;
+}
+
+/* ===== PAGES ===== */
+.page{
+  position:absolute;
+  top:0;
+  left:100%;
+  width:100%;
+  min-height:100vh;
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#a1004f;
+  opacity:0;
+  transition:all .7s ease;
+}
+
+.page.active{
+  left:0;
+  opacity:1;
+  z-index:1;
+}
+
+/* ===== TEXT ===== */
+h1{font-size:3rem;margin-bottom:20px;}
+h2{font-size:2.5rem;margin-bottom:15px;}
+
+p{
+  font-size:1.8rem;
+  line-height:2.4rem;
+  margin:10px 0;
+}
+
+/* ===== BUTTON ===== */
+button{
+  background:#ff5fa2;
+  color:#fff;
+  border:none;
+  padding:12px 22px;
+  border-radius:25px;
+  font-size:20px;
+  cursor:pointer;
+  margin:10px;
+  transition:.3s;
+}
+
+button:hover{
+  background:#ff78b2;
+  transform:scale(1.05);
+}
+
+/* ===== NAV ===== */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+  margin-top:20px;
+}
+
+/* ===== GIF / VIDEO ===== */
+.media{
+  width:100%;
+  max-width:360px;
+  height:auto;
+  display:block;
+  margin:15px auto;
+  border-radius:18px;
+}
+
+/* ===== LETTER ===== */
+.letterBox{
+  background:#fff;
+  color:#333;
+  padding:20px;
+  border-radius:15px;
+  margin-top:20px;
+  display:none;
+  max-height:60vh;
+  overflow:auto;
+}
+
+/* ===== HEART PULSE ===== */
+.pulse{
+  font-size:70px;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+
+/* ===== HEART GLOW ===== */
+.glow-heart{
+  font-size:70px;
+  cursor:pointer;
+  animation:glow 2s infinite;
+}
+
+@keyframes glow{
+  0%{text-shadow:0 0 5px #fff;}
+  50%{text-shadow:0 0 25px hotpink;}
+  100%{text-shadow:0 0 5px #fff;}
+}
+
+/* ===== INPUT ===== */
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  font-size:1.6rem;
+  margin-top:10px;
+}
+
+.showToggle{
+  cursor:pointer;
+  color:#a1004f;
+  margin-top:8px;
+}
+
+/* ===== PASSWORD SHAKE ===== */
+.shake{
+  animation:shake .4s;
+  border:2px solid red;
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  50%{transform:translateX(5px);}
+  75%{transform:translateX(-5px);}
+  100%{transform:translateX(0);}
+}
+
+/* ===== TYPING (MOBILE SAFE) ===== */
+.typing{
+  display:inline-block;
+  max-width:90%;
+  overflow:hidden;
+  white-space:normal;
+  width:0;
+  animation: typing 10s steps(120, end) forwards;
+}
+
+/* reset when page inactive */
+.page:not(.active) .typing{
+  width:0;
+  animation:none;
+}
+
+/* typing keyframes */
+@keyframes typing{
+  from{ width:0; }
+  to{ width:100%; }
+}
+
+/* ===== FLOATING EMOJI ===== */
+.emoji{
+  position:fixed;
+  bottom:-40px;
+  font-size:28px;
+  animation:floatUp 6s linear forwards;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  to{
+    transform:translateY(-110vh);
+    opacity:0;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  h1{font-size:1.8rem;}
+  h2{font-size:1.5rem;}
+  p{font-size:1rem;line-height:1.6rem;}
+  button{font-size:16px;padding:10px 16px;}
+  .gif,video{width:90%;max-width:260px;}
+}
+</style>
+  </head>
+
+  <body>
+
+  <!-- LOADER -->
+<div id="loader">
+  <div class="loader-heart">💖</div>
+  <p>Loading our love…</p>
+</div>
+
+<!-- AUDIO -->
+<audio id="myAudio" loop>
+  <source src="music/love-song.mp3" type="audio/mpeg">
+</audio>
+
+
+
+<!-- START PAGE -->
+<div class="page" id="startPage">
+  <h1>💖✨ Welcome to This Special Page ✨💖</h1>
+  <p> This website has been created with lots of love for a very special person — you 💕🌷
+Before you enter this little world of our memories, please click the button below to start and play our song 🎶🎧
+This page is not just a website — it is a small digital gift made especially for our 10-month anniversary and Valentine’s Week 💝💫 Every page you will see here carries sweet memories, beautiful moments, and feelings that mean a lot to us 🌸📖
+Let the music play softly while you explore each section 🎵✨ Feel the warmth, care, and effort that went into making this just for you 🥰🌹
+Take your time, enjoy every page, smile a little, and remember how special you are 💕😊
+This was made with love, patience, and lots of heartfelt feelings just for you 💖💫 </p>
+  <button id="startBtn">Start 💘</button>
+ 
+</div>
+
+<!-- FIRST REAL PAGE -->
+<div class="page" id="page1">
+  <h1>Happy 10 Months Anniversary ❤️</h1>
+ <video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/anniversy.mp4" type="video/mp4">
+</video>
+
+
+  <p>
+   <span class="typing"> It’s hard to believe that we’ve already completed 10 months together 🕰️💫.
+These months may not seem very long, but they mean a lot to me 💙.
+Every conversation 💬, every laugh 😄, every little argument 🤍,
+and every moment we shared 🌸 has made this journey special.
+Being in a relationship with you has taught me patience 🌱, care 🤗,
+trust 🔐, and how beautiful it feels to have someone who truly matters 💖.
+Happy 10 months to us 💙🥰 </span> 
+  </p>
+  <div class="nav">
+    <button onclick="prev()">⬅️ Prev</button>
+    <button onclick="next()">Next ➡️</button>
+  </div>
+</div>
+
+
+<!-- PAGE 2 -->
+<div class="page">
+<h2>10 Months With You 💖</h2>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/love.mp4" type="video/mp4">
+</video>
+
+<p>
+10 months 0 days 🗓️<br>
+43 weeks 5 days ⏳<br>
+306 days 🌤️<br>
+7,344 hours ⌛<br>
+440,640 minutes ⏰<br>
+</p>
+<p id="timeCounter"></p>
+
+<p> <span class="typing"> Every single second holds a memory 📸, a laugh 😆, a little bit of craziness 🤪, and so much love 💕✨
+These 306 days aren’t just time…
+They’re late-night talks 🌙📞
+random laughs 😂
+silly selfies 🤳💖
+being there for each other quietly when life feels heavy 🤍
+and understanding each other even when we say “I’m fine” 🫶
+For 7,344 hours,
+we’ve depended on each other 🤝
+shared happiness 😊
+dreamed together 🌈✨
+And I want this time to keep growing, never shrinking 🌙💫
+440,640 minutes of you being the most beautiful part of my day 🌷
+my greatest comfort 🤍
+my sweetest habit 💗🍯
+And in these 26,438,400 seconds,
+there has been one truth, there is one truth, and there always will be —
+I am always by your side. 🤍✨
+The more days go by, the more I’m yours 💞
+No matter the storms 🌧️, I will never leave you 🫂
+Life may change 🔄, but this “us” will always stay 💑🌸
+When you smile — my day lights up ☀️😊
+When you’re quiet — my heart wants to sit close to yours 🤍🌧️
+When you dream — I want all your dreams to come true 🌈💭✨
+These 10 months are just the beginning… 🌟
+Many more months, many more years, countless memories are waiting for us 📖💞
+And I am ready to feel every single second with you ⏳💖
+Always. Every day. Every hour. Every minute. Every second. ⏰💓
+I am by your side. 🤍✨🫶 </span> 
+</p>
+<div class="nav">
+  <button onclick="prev()">⬅️ Prev</button>
+  <button onclick="next()">Next ➡️</button></div>
+</div>
+
+<!-- PAGE 3 LETTER -->
+<div class="page">
+<h2>Tap this 💌 to read my heart</h2>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/letter.mp4" type="video/mp4">
+</video>
+
+
+<div class="pulse" onclick="openLetter()">💌</div>
+<div id="letter" class="letterBox">
+<p>
+ <span class="typing">My Love,<br><br>
+Today marks 10 beautiful months of us 🥹❤️, and it still feels a little unreal ✨ Ten months filled with memories 📸, laughter 😄, love 💞, and moments I’ll always keep close to my heart 🤍 Every day with you, even the simple ones, feels special 🌸
+From the very beginning, something about you felt different 💫 — calm 🌿, safe 🤗, and just right 💖 You understand me even when I can’t explain myself 🥺, and that kind of connection is rare 💎
+These months have been about growing together 🌱, sharing laughs 😂, deep talks 🌙, and even quiet moments 🤫 where no words were needed. No matter what, we keep choosing each other 🫶❤️
+Thank you for staying, for caring 💗, and for putting effort into us every single day 🌷 You’re my comfort on hard days 🤍 and my favorite person on the good ones ☀️
+Ten months down, and my heart still chooses you 💘 — today, tomorrow, and for all the days to come 🌈💫❤️<br><br>
+Forever yours ❤️<br>
+Baban 🐣 🌷🧿 </span>
+</p>
+</div>
+<div class="nav">
+<button onclick="prev()">⬅️</button>
+<button id="lNext" onclick="next()" disabled>➡️</button>
+</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+<h1>Valentine Week Begins 💖</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/week.mp4" type="video/mp4">
+</video>
+
+<p>
+  <span class="typing">
+    Happy Valentine’s Week 💘✨</span>
+
+    <span class="typing"> 7TH February 2026 - 14TH February 2026 </span>
+
+<span class="typing"> This week isn’t just about roses 🌹 and chocolates 🍫, it’s about feelings 💙, moments 🫶, and the little things that make the heart feel full 🥰. And honestly, this week feels extra special because you’re a part of my life ✨.
+From our random talks 💬 to shared smiles 😊, from silly arguments 😅 to quiet understanding 🫂—everything with you feels meaningful 🌸. You make ordinary days feel brighter ☀️ and simple moments feel warmer 💖.
+As this beautiful week begins 💘, I just want you to know how much you matter to me 🤍. Thank you for your care 🫶, your patience 🌱, and for being you 💫. Every day with you feels like a small celebration 🎉.
+Here’s to a week full of love 💕, laughter 😄, comfort 🤗, and beautiful memories 📸.
+Happy Valentine’s Week </span>
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+<h1>🌹 Rose Day 🌹</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/rose.mp4" type="video/mp4">
+</video>
+
+
+<p> 
+  <span class="typing">
+    7TH February 2026 </span>
+ <span class="typing"> Rose Day 💐❤️</span>
+<span class="typing">
+A rose 🌹 is often seen as a simple flower, but it carries deep emotions, softness, and beauty—just like the way you’ve slowly become such an important part of my life 💖. You didn’t rush in, you didn’t force anything; you simply stayed 🫶. And with time ⏳, your presence began to color my days 🎨 in the most gentle way.
+Every conversation with you 💬 feels warm and comforting 🤍. Even on normal days, just talking to you makes things feel lighter 🌤️. You have this quiet way of making me smile 😊 without even trying. Today, this rose isn’t just a flower—it’s my way of appreciating you 🌸, your care 💞, and the calm you bring into my heart 💫.
+  </span> 
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+<h1>💍 Propose Day 💍</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/propose.mp4" type="video/mp4">
+</video>
+
+
+<p>
+   <span class="typing">
+    8TH February 2026</span>
+ <span class="typing">
+Happy Propose Day 💖✨ </span>
+<span class="typing">
+Propose Day is about expressing feelings 💭 that sometimes stay hidden in the heart 🤍. So today, I want to say this clearly—you matter to me more than you realize 🫶. Being in a relationship with you has brought a sense of comfort, understanding, and emotional safety 💙 that I truly value.
+I may not always find the perfect words 🥺, but my feelings are honest and real. With you, I don’t have to pretend or explain too much—you just understand 🫂. Choosing you every day doesn’t feel like effort; it feels natural 🌱. And that, to me, is something very special ✨.
+  </span> 
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+<h1>🍫 Chocolate Day 🍫</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/chocolate.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing">
+    9TH February 2026 </span>
+ <span class="typing"> Happy Chocolate Day 🍫💖 </span>
+<span class="typing">
+Chocolate Day reminds me of sweetness 🍫, and honestly, you add that sweetness to my life in the best way 💖. On tough days 😣, talking to you makes things feel easier. On good days 😊, sharing them with you makes them even better 🌈.
+You have this way of turning small moments into happy ones 🫶—a simple message, a small joke, or just your presence 💬. Life feels lighter with you around ✨. Today is a reminder that sweetness isn’t just about chocolates, it’s about people who make life feel warm and happy 🤍.
+</span>
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+<h1>🧸 Teddy Day 🧸</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/teddy.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing">
+    10TH February 2026 </span>
+<span class="typing">
+Happy Teddy Day 🧸💞 </span>
+<span class="typing">
+Teddy Day is all about comfort 🤗, and that’s exactly what you give me. Just knowing you’re there brings peace 🕊️. When things get overwhelming 🌧️, the thought of you feels calming and safe 🤍.
+You make me feel accepted the way I am 💙, without pressure or judgment. Like a teddy 🧸, you represent warmth, care, and that soft feeling of being understood 🫶. That comfort you give me means more than words can explain ✨.
+</span>
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+<h1>🤝 Promise Day 🤝</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/promise.mp4" type="video/mp4">
+</video>
+
+
+
+<p>
+  <span class="typing">
+    11TH February 2026 </span>
+<span class="typing">
+Happy Promise Day 💫🤍 </span>
+<span class="typing">
+Promise Day isn’t about big dramatic promises 🌸, but about the small, meaningful ones. It’s about being honest 💬, respectful 🫶, and emotionally present 🤍. It’s about listening, understanding, and staying genuine even when things aren’t perfect 🌱.
+I promise to value what we have 💖, to communicate honestly, and to treat this relationship with care ✨. Simple promises, but real ones—and sometimes, those are the most important 🤍.
+  </span> 
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+<h1>🤗 Hug Day 🤗</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/hug.mp4" type="video/mp4">
+</video>
+
+
+
+<p>
+  <span class="typing">
+    12TH February 2026 </span>
+<span class="typing">
+Happy Hug Day 🫶✨ </span>
+<span class="typing">
+Hug Day reminds me of comfort 🤍, warmth 💫, and that safe feeling when everything feels okay for a moment 🤗. A hug doesn’t need words—it just understands 🫂. And that’s exactly what I feel with you.
+When life feels heavy 🌧️ or my mind feels tired 😔, just thinking about you brings calm 🕊️. You have this quiet way of making things feel lighter without even trying 💙. That emotional closeness, that sense of being understood, is what makes you so special to me 🫶.
+A hug is about trust 🤍, about letting someone close, and feeling safe there 🌸. And with you, that feeling comes naturally ✨. Today isn’t about physical closeness only—it’s about that emotional warmth, that connection we share 💞.
+Sending you the tightest, warmest hug 🤗💖
+  </span>
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page">
+<h1>💋 Kiss Day 💋</h1>
+ <video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/kiss.mp4" type="video/mp4">
+</video>
+
+<p>
+  <span class="typing">
+    13TH February 2026 </span>
+<span class="typing">
+Happy Kiss Day 😘💖 </span>
+<span class="typing">
+Kiss Day isn’t just about a kiss 💋, it’s about emotional closeness, trust, and connection 🤍. It represents that comfort of being close to someone who understands you without words 🫶.
+That bond we share—the ease, the understanding, the quiet moments—means a lot to me 💙. It’s not about grand gestures, but about feeling connected on a deeper level ✨.
+  </span> 
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page">
+<h1>🩷 Valentine’s Day 🩷</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/valentine.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing">
+    14TH February 2026 </span>
+<span class="typing">
+Happy Valentine’s Day ❤️✨ </span>
+<span class="typing">
+Valentine’s Day is a celebration of love 💘, connection 🫶, and appreciation 🤍. And today, I just want to say how grateful I am for you 💙. You’ve brought warmth, smiles, and meaning into my life in a very real way 🌸.
+What we share isn’t perfect—but it’s genuine ✨. And that’s what makes it special. Thank you for being part of my life, my days, and my heart 🤍. This Valentine’s Day, I celebrate you 💖🫶.
+  </span> 
+</p>
+<div class="nav"><button onclick="prev()">⬅️</button><button onclick="next()">➡️</button></div>
+</div>
+
+<!-- ASK PAGE -->
+<div class="page" id="askPage">
+<h1>💖 Will You Be My Valentine?</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/ask.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing"> From the very first moment you walked into my life 💫, everything around me changed 💖.
+My days became brighter 🌞, my nights felt warmer 🌙, and my heart finally found a place where it truly belongs 🫶.
+
+Every smile of yours 😊 makes my heart skip a beat 💓.
+Every little conversation 💬, every laugh 😂, every silence we share 🤍—they all mean more to me than you’ll ever know 🌸.
+You’re not just someone I love 💕, you’re my comfort 🏡, my happiness 🌈, my safe place 🤗.
+
+When I think about the future 🔮, all I see is us—
+walking hand in hand 👣, dreaming together ✨, supporting each other 💪, and loving each other a little more every single day 💞.
+
+So today, with all the love in my heart 💗 and all the courage I can gather 🥺,
+I want to ask you something very special 💝…
+
+🌹 Will you be my Valentine? 🌹
+
+Not just for today 💌,
+but for every tomorrow 🌅,
+every smile 😊,
+every tear 😢,
+every dream 🌠,
+and every forever we can create together 💍💖
+  </span> 
+</p>
+<button onclick="goYes()">YES 💕</button>
+<button onclick="goNo()">NO 💔</button>
+</div>
+
+<!-- NO PAGE -->
+<div class="page" id="noPage">
+<h2>Even if you say no…</h2>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/sad.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing">
+If you say no, I won’t stop you or ask you to stay 😔💭. I’ll understand that some feelings don’t grow the same way in two hearts 💔. Even if it hurts me, I’ll respect what you feel 🤍.
+
+I never loved you to pressure you or make you feel trapped 🔗🫶. I loved you quietly, honestly, and without expecting anything in return 💖. Being close to you, talking to you, sharing little moments—those were already enough for me 🌙✨.
+
+If you walk away, my heart will ache, but it won’t blame you 🖤. I’ll still wish for your happiness 🌸, still hope you smile every day 😊, and still keep this love softly inside me 🌫️.
+
+Some loves are not meant to be chosen or held 🤲. Some loves simply stay… felt, remembered, and carried forever 💔🌙.
+  </span> 
+</p>
+<button onclick="backToAsk()">Go Back 💫</button>
+</div>
+
+<!-- YES PAGE -->
+<div class="page" id="yesPage">
+<h1>You Said YES ❤️</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/yes.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing">
+When I saw that one simple word, my heart stopped for a moment 💓.
+That one word meant everything to me 🥺💞 — it felt like all my prayers were finally heard ✨.
+
+In that second, every doubt faded away 💭, every fear felt smaller, and my heart finally felt safe 🤍.
+You didn’t just say yes… you chose us 💑, and that choice means more to me than I can ever explain 🌸.
+
+Thank you for seeing my heart 💖, even when it was quiet.
+Thank you for understanding my feelings 🫶, even when I couldn’t say everything out loud.
+Thank you for choosing us 🫶, for trusting this love, and for believing in what we can be together 💞.
+
+From this moment on 🌅, I promise to walk beside you 👣—
+through smiles 😊, through tears 😢, through good days 🌈 and bad nights 🌙.
+I may not be perfect 🤍, but my love for you will always be honest, patient, and true 💗.
+
+Today wasn’t just a yes 💌.
+It was the beginning of countless tomorrows 🌠, shared dreams ✨, late-night talks 💬, and a love that grows stronger with every heartbeat 💓.
+
+No matter where life takes us 🌍,
+I’ll always be grateful for this moment 🥺—
+the moment you chose us 💖💍. 
+</span>
+</p>
+<button onclick="goForever()">Next 💖</button>
+</div>
+
+<!-- FOREVER PAGE -->
+<div class="page" id="foreverPage">
+<h1>Forever Us ❤️</h1>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/forever.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing">❤️ Click the Heart ❤️
+
+The moment you clicked this heart, something special opened inside 🥺💓. Not just a page, not just a secret—but a feeling that has been growing quietly with time 💞. This heart didn’t respond to a random touch; it opened because it recognized you 🫶, the one who makes my days brighter 🌞 and my nights softer 🌙.
+Every beat of this heart carries pieces of us—our small talks 💬, our shared smiles 😊, our comfortable silence 🤍, and all those moments that meant more than words 🌸. By touching this heart ❤️, you didn’t just enter a space, you stepped into Forever Us 💍, a place built on trust 🤞, care 🫶, and the promise of choosing each other again and again 💖.
+Stay here for a moment 🥺. Read slowly 💭. Because everything inside this heart ❤️ was written with you in mind, and every feeling here belongs to us 💞✨.
+</span>
+</p>
+
+<div class="pulse" onclick="openPass()">❤️</div>
+<p>Touch my heart 💖</p>
+</div>
+
+<!-- PASSWORD PAGE -->
+<div class="page" id="passPage">
+<h2> Secret Page 🧿</h2>
+<input type="password" id="pass" placeholder="Enter password">
+<div class="showToggle" onclick="togglePass()">👁 Show / Hide Password</div>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/password.mp4" type="video/mp4">
+</video>
+
+
+<p>
+  <span class="typing"> Hint: 🌸💞 “Woh din jab do alag raaste chalne wale log, ek hi kahaani ban gaye…
+Jab ‘MAIN’ aur ‘TUM’ dheere se ‘HUM’ ban gaye 💑✨
+Duniya ke liye normal date thi, par hamare liye wohi din tha jab FOREVER start hua ❤️🔐💫
+Us din se, har pal hamare liye ek nayi kahaani ban gaya 🌟
+Har muskaan 😄, har baat 💬, har chhoti si yaad 🌸, hamare dil me ek nayi roshni laaye 💖
+Aur tab se aaj tak, tum mere liye sirf ek saathi hi nahi, balki meri duniya ho 💕🫶
+Tumhari har chhoti baat, har muskaan, har touch mere liye priceless hai 💞💫
+Aur main hamesha chahunga ki hum dono ka yeh safar yunhi FOREVER rahe ❤️🔐💑✨
+
+Toh phir batao password kya hai 😵‍💫🧐 
+  </span>
+</p>
+
+<p>
+  <span class="typing">**Password contains only numbers, without any symbols, and must be exactly 8 digits long.✅**
+  </span>
+  </p>
+<button onclick="checkPass()">Unlock 💖</button>
+</div>
+
+<!-- SECRET PAGE -->
+<div class="page" id="secretPage">
+<h1>Forever Means You & Me ❤️</h1>
+<p> 
+  <span class="typing"> My Secret Promise to You, Mummum 🧿 🥹💞 
+  </span>
+  </p>
+
+  <p> 
+  <span class="typing">I will always be by your side, 🥰Mummum 🤍🐣
+
+No matter how many storms 🌪️ come, no matter what happens 🌧️ — I will always stay 💫
+No matter what, we will support and respect each other’s families 🏡🤝, and make them see and accept the love we share 💖
+And no matter how many fights we have 😤🔥, at the end of the day, I will always be yours, Mummum 🫶
+Even if we don’t talk for half a day because of a big fight 😅, I know that we will always come back to each other 🥰💬
+Whenever I get a little angry 😡, you come to me with so much love and care 🫂💗 — that makes me feel so special 🥹
+And when you send me those cute gifs 😆🎁, I can’t help but smile 😄💖, feeling how much you care about me 💌
+Today marks 10 months 💞✨, and I can’t believe how fast time has flown
+I want to spend my entire life with you, Mummum 🤍
+Promise me 🌈 — you will never leave me 🙏💫
+And thank you 💖 for staying by my side all this time 🥹
+For being my comfort, my joy, my love 🌸
+And for being there in the future too, holding my hand through every moment 🤍🌟
+Our love, our memories, our moments 💞 — they make my life so special ✨
+And I promise, Always. Every day. Every hour. Every minute. Every second. ⏰💓
+I am yours, and I will always choose you, Mummum  🫶💖
+  </span>
+</p>
+
+<p> <span class="typing"> I love you soooooo much sweetheart 😘💘 </span> </p>
+<p>  <span class="typing">Ummmmmaaaaaahhhhhhhhh 🧿😙🤍🎀 </span> </p>
+<video
+  class="media"
+  muted
+  autoplay
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source src="videos/secret.mp4" type="video/mp4">
+</video>
+
+
+</div>
+
+
+<!-- ===== JS ===== -->
+<script>
+/* ================= LOADER ================= */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) loader.style.display = "none";
+
+  pages.forEach(p => p.classList.remove("active"));
+  if (pages[0]) pages[0].classList.add("active");
+  current = 0;
+
+  playVideosOnPage();
+});
+
+/* ================= PAGES ================= */
+const pages = document.querySelectorAll(".page");
+let current = 0;
+
+function showPageIndex(n) {
+  pages.forEach(p => p.classList.remove("active"));
+  if (!pages[n]) return;
+
+  pages[n].classList.add("active");
+  current = n;
+
+  resetTyping(pages[n]);
+  playVideosOnPage();
+}
+
+window.next = () => {
+  if (current < pages.length - 1) showPageIndex(current + 1);
+};
+
+window.prev = () => {
+  if (current > 0) showPageIndex(current - 1);
+};
+
+/* ================= PAGE JUMP ================= */
+function showPage(id) {
+  pages.forEach(p => p.classList.remove("active"));
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  target.classList.add("active");
+  current = [...pages].indexOf(target);
+
+  resetTyping(target);
+  playVideosOnPage();
+}
+
+window.goNo = () => showPage("noPage");
+window.backToAsk = () => showPage("askPage");
+window.goYes = () => showPage("yesPage");
+window.goForever = () => showPage("foreverPage");
+window.openPass = () => showPage("passPage");
+
+/* ================= TYPING RESET ================= */
+function resetTyping(page) {
+  page.querySelectorAll(".typing").forEach(el => {
+    el.style.animation = "none";
+    el.offsetHeight; // reflow
+    el.style.animation = "";
+  });
+}
+
+/* ================= AUDIO (MOBILE + PC SAFE) ================= */
+const audio = document.getElementById("myAudio");
+let unlocked = false;
+
+function playMusic() {
+  if (!audio || unlocked) return;
+
+  audio.muted = false;
+  audio.volume = 0.7;
+
+  audio.play().then(() => {
+    unlocked = true;
+
+    // 🎵 Play Music button hide
+    const btn = document.getElementById("playBtn");
+    if (btn) btn.style.display = "none";
+
+  }).catch(() => {});
+}
+
+/* First user gesture */
+document.addEventListener("click", playMusic, { once: true });
+document.addEventListener("touchstart", playMusic, { once: true });
+
+/* ================= VIDEO / GIF AUTOPLAY ================= */
+function playVideosOnPage() {
+  const page = pages[current];
+  if (!page) return;
+
+  page.querySelectorAll("video").forEach(v => {
+    v.pause();
+    v.currentTime = 0;
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
+    v.play().catch(() => {});
+  });
+}
+
+/* ================= START BUTTON ================= */
+const startBtn = document.getElementById("startBtn");
+if (startBtn) {
+  startBtn.addEventListener("click", () => {
+    playMusic(); // 🎵 start music
+    next();      // 👉 next page
+  });
+}
+
+/* ================= LETTER ================= */
+window.openLetter = () => {
+  const letter = document.getElementById("letter");
+  const btn = document.getElementById("lNext");
+  if (letter) letter.style.display = "block";
+  if (btn) btn.disabled = false;
+};
+
+/* ================= PASSWORD ================= */
+window.togglePass = () => {
+  const p = document.getElementById("pass");
+  if (p) p.type = p.type === "password" ? "text" : "password";
+};
+
+window.checkPass = () => {
+  const p = document.getElementById("pass");
+  if (!p) return;
+
+  if (p.value === "04042025") {
+    showPage("secretPage");
+  } else {
+    p.classList.add("shake");
+    setTimeout(() => p.classList.remove("shake"), 400);
+  }
+};
+
+/* ================= TIMER ================= */
+const startTime = new Date("2025-04-01").getTime();
+setInterval(() => {
+  const el = document.getElementById("timeCounter");
+  if (!el) return;
+
+  const sec = Math.floor((Date.now() - startTime) / 1000);
+  el.innerText = sec.toLocaleString() + " seconds together 💞";
+}, 1000);
+
+/* ================= FLOATING EMOJIS ================= */
+const emojis = ["💕","💞","💓","💗","💖","💝","💘","🩷","🤍","❤️","🧿"];
+
+setInterval(() => {
+  const e = document.createElement("div");
+  e.className = "emoji";
+  e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+  e.style.left = Math.random() * 100 + "vw";
+  e.style.fontSize = (20 + Math.random() * 20) + "px";
+  document.body.appendChild(e);
+
+  setTimeout(() => e.remove(), 6000);
+}, 500);
+</script>
+
+  </body>
+</html>
